@@ -71,8 +71,27 @@ class ArbolRojiNegroTest {
 
         assertEquals(instanciaB.inorden(), "-32 -22 -14 -9 -7 -1 0 1 2 3 7 9 13 14 17 19 20 22 33 50 66");
         assertTrue(altura(instancia) <= 2 * Math.log(20) / Math.log(2) + 1);
+     }
 
-    }
+     @Test
+     void strongTest() throws Exception {
+         ArbolRojinegro instanciaC = new ArbolRojinegro(null, null, -1, true);
+
+         for (int i = 0; i < 500; i++) {
+             instanciaC.insertar(i);
+         }
+
+         assertTrue(altura(instanciaC) <= 2 * Math.log(500) / Math.log(2) + 1);
+
+         ArbolRojinegro instanciaD = new ArbolRojinegro(null, null, -1, true);
+
+         for (int i = 499; i >= 0; i--) {
+             instanciaD.insertar(i);
+         }
+
+         assertTrue(altura(instanciaD) <= 2 * Math.log(500) / Math.log(2) + 1);
+
+     }
 
     @Test
     void maximoTest() throws Exception {
